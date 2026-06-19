@@ -1,0 +1,674 @@
+/* =============================================
+   CSS CUSTOM PROPERTIES — THEMES
+   ============================================= */
+:root,
+[data-theme="light"] {
+  --bg:           #f0f4f8;
+  --bg-card:      #ffffff;
+  --bg-input:     #f8fafc;
+  --border:       #e2e8f0;
+  --text:         #1a202c;
+  --text-muted:   #718096;
+  --accent:       #4f46e5;
+  --accent-hover: #4338ca;
+  --accent-text:  #ffffff;
+  --btn-ghost-bg: #edf2f7;
+  --btn-ghost-hover: #e2e8f0;
+  --btn-secondary-bg: #e2e8f0;
+  --btn-secondary-hover: #cbd5e0;
+  --todo-done-text: #a0aec0;
+  --progress-bg:  #e2e8f0;
+  --progress-fill: #4f46e5;
+  --shadow:       0 2px 12px rgba(0,0,0,0.08);
+  --shadow-card:  0 4px 20px rgba(0,0,0,0.07);
+  --radius:       14px;
+  --radius-sm:    8px;
+  --link-btn-bg:  #eef2ff;
+  --link-btn-text:#4f46e5;
+  --link-btn-hover:#e0e7ff;
+  --timer-ring:   #4f46e5;
+  --sort-active-bg: #4f46e5;
+  --sort-active-text: #fff;
+}
+
+[data-theme="dark"] {
+  --bg:           #0f1117;
+  --bg-card:      #1a1d27;
+  --bg-input:     #252836;
+  --border:       #2d3148;
+  --text:         #e2e8f0;
+  --text-muted:   #718096;
+  --accent:       #7c6ef5;
+  --accent-hover: #6b5de4;
+  --accent-text:  #ffffff;
+  --btn-ghost-bg: #252836;
+  --btn-ghost-hover: #2d3148;
+  --btn-secondary-bg: #252836;
+  --btn-secondary-hover: #2d3148;
+  --todo-done-text: #4a5568;
+  --progress-bg:  #252836;
+  --progress-fill: #7c6ef5;
+  --shadow:       0 2px 12px rgba(0,0,0,0.4);
+  --shadow-card:  0 4px 20px rgba(0,0,0,0.35);
+  --link-btn-bg:  #252836;
+  --link-btn-text:#a89cf5;
+  --link-btn-hover:#2d3148;
+  --timer-ring:   #7c6ef5;
+  --sort-active-bg: #7c6ef5;
+  --sort-active-text: #fff;
+}
+
+[data-theme="coquette"] {
+  --bg:           #fdf2f8;
+  --bg-card:      #fff0f6;
+  --bg-input:     #fff5f9;
+  --border:       #f9c8df;
+  --text:         #5c2d3e;
+  --text-muted:   #c4829a;
+  --accent:       #e8648a;
+  --accent-hover: #d4516f;
+  --accent-text:  #ffffff;
+  --btn-ghost-bg: #fde8f1;
+  --btn-ghost-hover: #f9c8df;
+  --btn-secondary-bg: #f9c8df;
+  --btn-secondary-hover: #f5afc9;
+  --todo-done-text: #c4829a;
+  --progress-bg:  #f9c8df;
+  --progress-fill: #e8648a;
+  --shadow:       0 2px 12px rgba(232,100,138,0.12);
+  --shadow-card:  0 4px 20px rgba(232,100,138,0.10);
+  --link-btn-bg:  #fde8f1;
+  --link-btn-text:#e8648a;
+  --link-btn-hover:#f9c8df;
+  --timer-ring:   #e8648a;
+  --sort-active-bg: #e8648a;
+  --sort-active-text: #fff;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+  line-height: 1.6;
+}
+
+/* =============================================
+   LAYOUT
+   ============================================= */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 48px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   THEME BAR
+   ============================================= */
+.theme-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.theme-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+.theme-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 2px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.theme-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.theme-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+/* =============================================
+   CARD
+   ============================================= */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 24px;
+  box-shadow: var(--shadow-card);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 18px;
+  letter-spacing: 0.01em;
+}
+
+/* =============================================
+   GREETING CARD
+   ============================================= */
+.greeting-card {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 32px 24px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.greeting-time {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1;
+  color: #fff;
+}
+
+.greeting-date {
+  font-size: 1rem;
+  opacity: 0.85;
+  margin-top: 6px;
+  color: #fff;
+}
+
+.greeting-text {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 10px;
+  color: #fff;
+  opacity: 0.95;
+}
+
+/* =============================================
+   FOCUS TIMER CARD
+   ============================================= */
+.timer-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timer-display {
+  font-size: 3.8rem;
+  font-weight: 800;
+  letter-spacing: -2px;
+  color: var(--accent);
+  margin-bottom: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.timer-progress-wrap {
+  width: 100%;
+  height: 6px;
+  background: var(--progress-bg);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.timer-progress-bar {
+  height: 100%;
+  background: var(--progress-fill);
+  border-radius: 99px;
+  width: 100%;
+  transition: width 1s linear;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.timer-duration-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.timer-duration-wrap input {
+  width: 60px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.timer-duration-wrap input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* =============================================
+   TO-DO LIST CARD
+   ============================================= */
+.todo-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-add {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.todo-add input {
+  flex: 1;
+}
+
+.todo-sort-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.sort-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-right: 2px;
+}
+
+.sort-btn {
+  padding: 3px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sort-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sort-btn.active {
+  background: var(--sort-active-bg);
+  border-color: var(--sort-active-bg);
+  color: var(--sort-active-text);
+}
+
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 340px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.todo-list::-webkit-scrollbar {
+  width: 4px;
+}
+.todo-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+.todo-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s;
+  cursor: grab;
+}
+
+.todo-item:active {
+  cursor: grabbing;
+}
+
+.todo-item.dragging {
+  opacity: 0.45;
+  background: var(--accent);
+}
+
+.todo-item.drag-over {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: var(--todo-done-text);
+}
+
+.todo-check {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.todo-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  transition: all 0.2s;
+}
+
+.todo-btn:hover {
+  background: var(--btn-ghost-bg);
+  color: var(--text);
+}
+
+.todo-btn.delete:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.drag-handle {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: grab;
+  padding: 0 2px;
+}
+
+.todo-empty {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 20px 0;
+  display: none;
+}
+
+.todo-empty.visible {
+  display: block;
+}
+
+/* =============================================
+   QUICK LINKS CARD
+   ============================================= */
+.links-card {
+  grid-column: 1 / -1;
+}
+
+.links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 14px;
+  min-height: 0;
+}
+
+.link-btn-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--link-btn-bg);
+  color: var(--link-btn-text);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.link-btn:hover {
+  background: var(--link-btn-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.link-delete-btn {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+
+.link-btn-wrap:hover .link-delete-btn {
+  opacity: 1;
+}
+
+.links-empty {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  display: none;
+}
+
+.links-empty.visible {
+  display: block;
+}
+
+.links-add-form {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+}
+
+.links-add-form input {
+  flex: 1;
+  min-width: 120px;
+}
+
+/* =============================================
+   SHARED INPUT STYLES
+   ============================================= */
+input[type="text"],
+input[type="url"],
+input[type="number"] {
+  padding: 9px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: border-color 0.2s, outline 0.2s;
+  width: 100%;
+}
+
+input[type="text"]::placeholder,
+input[type="url"]::placeholder {
+  color: var(--text-muted);
+}
+
+input[type="text"]:focus,
+input[type="url"]:focus,
+input[type="number"]:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  padding: 9px 18px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.18s;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: var(--btn-secondary-bg);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  background: var(--btn-secondary-hover);
+}
+
+.btn-ghost {
+  background: var(--btn-ghost-bg);
+  color: var(--text-muted);
+}
+
+.btn-ghost:hover {
+  background: var(--btn-ghost-hover);
+  color: var(--text);
+}
+
+/* =============================================
+   MODAL
+   ============================================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(2px);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 28px 24px;
+  width: min(90vw, 400px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.modal h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.modal input {
+  margin-bottom: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
