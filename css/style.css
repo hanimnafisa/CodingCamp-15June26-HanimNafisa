@@ -32,12 +32,12 @@
 }
 
 [data-theme="dark"] {
-  --bg:           #0f1117;
-  --bg-card:      #1a1d27;
+  --bg:           #13151d;
+  --bg-card:      #1a1f35;
   --bg-input:     #252836;
   --border:       #2d3148;
   --text:         #e2e8f0;
-  --text-muted:   #718096;
+  --text-muted:   #a4adb9;
   --accent:       #7c6ef5;
   --accent-hover: #6b5de4;
   --accent-text:  #ffffff;
